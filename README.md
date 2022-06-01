@@ -16,7 +16,7 @@ Para jogar clique no link 👇
 
 - [Jogar Secret Word](http://secret-word.surge.sh)
 
-## Screenshots
+## Screenshots ##
 
 ![App Screenshot](https://i.im.ge/2022/06/01/r8SPLY.png)
 
@@ -24,8 +24,4 @@ Para jogar clique no link 👇
 
 ![App Screenshot](https://i.im.ge/2022/06/01/r8Syn4.png)
 
-<p align="center">
-
-![App Screenshot](https://i.im.ge/2022/06/01/r8SCqC.md.png)
-
-</p>
+![App Screenshot](https://i.im.ge/2022/06/01/r8SYFP.png)
