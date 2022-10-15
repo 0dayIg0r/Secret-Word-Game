@@ -27,6 +27,42 @@ function App() {
   const [guesses, setGuesses] = useState(guessQty)
   const [score, setScore] = useState(0)
 
+
+  const [letterTip, setLetterTip] = useState([])
+  const [tipChance, setTipChance] = useState(2)
+  const [usedTips, setUsedTips] = useState()
+  console.log(guessedLetters)
+
+  const pickRandomLetterTips = () => {
+    const randomLetter = pickedWord.charAt(Math.floor(Math.random() * pickedWord.length)).toLowerCase()
+
+
+
+    if (letterTip.includes(randomLetter)) {
+      return
+    } else if (guessedLetters.includes(randomLetter)) {
+      return
+    } else {
+      letterTip.push(randomLetter)
+
+      setTipChance(tipChance - 1)
+    }
+
+    if (tipChance === 0) {
+      setTipChance(0)
+    }
+
+
+  }
+
+
+  useEffect(() => {
+    if (tipChance < 2) {
+      setUsedTips(letterTip)
+    }
+  }, [tipChance])
+
+
   const pickWordAndCategory = () => {
     // pick a random category
     const categories = Object.keys(words)
@@ -37,6 +73,7 @@ function App() {
 
     return { word, category }
   }
+
 
   //  starts the secret word game
   const startGame = () => {
@@ -87,6 +124,8 @@ function App() {
   const clearLetterStates = () => {
     setGuessedLetters([])
     setWrongLetters([])
+    setLetterTip([])
+    setTipChance(2)
   }
 
   // check if guesses ended
@@ -121,7 +160,7 @@ function App() {
   const retry = () => {
     setScore(0)
     setGuesses(guessQty)
-    setGameStage(stages[0].name )
+    setGameStage(stages[0].name)
   }
 
   return (
@@ -133,6 +172,10 @@ function App() {
           pickedWord={pickedWord}
           pickedCategory={pickedCategory}
           letters={letters}
+          letterTip={letterTip}
+          tipChance={tipChance}
+          usedTips={usedTips}
+          pickRandomLetterTips={pickRandomLetterTips}
           guessedLetters={guessedLetters}
           wrongLetters={wrongLetters}
           guesses={guesses}
